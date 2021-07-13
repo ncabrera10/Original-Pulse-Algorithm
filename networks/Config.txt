@@ -1,0 +1,8 @@
+DataFile:USA-road-NY.txt
+Number of Arcs:733846
+Number of Nodes:264346
+Time Constraint:943100
+Start Node:1
+End Node:14676
+
+// This is the NY network with p=0.1
