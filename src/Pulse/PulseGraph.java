@@ -296,7 +296,7 @@ public class PulseGraph  implements Graph<VertexPulse, EdgePulse> {
 	 */
 	public void SetConstraint(double timeC) {
 		
-		this.TimeC=timeC;
+		PulseGraph.TimeC=timeC;
 		
 	}
 	/**
@@ -305,7 +305,7 @@ public class PulseGraph  implements Graph<VertexPulse, EdgePulse> {
 	 */
 	public void setPrimalBound(int bound) {
 		
-		this.PrimalBound=bound;
+		PulseGraph.PrimalBound=bound;
 		
 	}
 	

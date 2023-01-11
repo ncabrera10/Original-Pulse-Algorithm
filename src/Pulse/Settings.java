@@ -7,7 +7,7 @@
  * 
  * 
  * @author L. Lozano
- * @affiliation Universidad de los Andes - Centro para la Optimización y Probabilidad Aplicada (COPA)
+ * @affiliation Universidad de los Andes - Centro para la Optimizaciï¿½n y Probabilidad Aplicada (COPA)
  * @url http://copa.uniandes.edu.co/
  * 
  */
@@ -16,7 +16,6 @@ package Pulse;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -57,6 +56,7 @@ public class Settings {
 		
 		File file = new File(ConfigFile);
 		 
+		@SuppressWarnings("resource")
 		BufferedReader bufRdr  = new BufferedReader(new FileReader(file));
 		String line = null;
 		

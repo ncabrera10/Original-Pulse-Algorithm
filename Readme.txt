@@ -27,13 +27,12 @@
 
 ===========================================================================================================================================================================
 
-This file contains important information about the Java code for the CSP. This code includes the "Path completion" pruning strategy presented in:
-
-Bolívar, M. A., Lozano, L. and Medaglia, A. L. (2014) Acceleration Strategies for the Weight Constrained Shortest Path Problem with Replenishment. Optimization Letters, 8 (8), 2155-2172.
+This file contains important information about the Java code for the CSP. This code allows for running the pulse
+in either the forward or the backward direction. 
 
 ===========================================================================================================================================================================
 
-The file Jpulse-CSP.zip contains all the source code for executing the pulse algorithm for the Constrained Shortest Path Problem (CSP). 
+The file Npulse-CSP.zip contains all the source code for executing the pulse algorithm for the Constrained Shortest Path Problem (CSP). 
 
 The main class is called "PulseMain" and requires a configuration file with the following information:
 

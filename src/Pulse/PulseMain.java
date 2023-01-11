@@ -17,9 +17,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class PulseMain {
 
@@ -33,8 +31,9 @@ public class PulseMain {
 		
 		//Create the test instance:
 		
-			File testFile = new File("./networks/Config.txt");
+			File testFile = new File("./networks/Config.txt"); // Go to the file to modify the instance TODO
 			
+			@SuppressWarnings("resource")
 			BufferedReader bufRedr = new BufferedReader(new FileReader(testFile));
 			
 			String actLine = null;
@@ -42,17 +41,16 @@ public class PulseMain {
 			String [] information = new String [6];
 			
 			int rowA = 0;
-			int colA = 0;
-			
+		
 			while((actLine = bufRedr.readLine()) != null && rowA < 6){	
 				String [] info = actLine.split(":");
 				information[rowA] = info[1];
 				rowA++;
 			}
 
-		//Choose the direction
+		//Choose the direction TODO
 			
-			String dir = "b";
+			String dir = "f";
 			
 		//Load the network and initialize
 			
@@ -90,11 +88,11 @@ public class PulseMain {
 		
 			int MD=network.getVertexByID(dataA.Source-1).getMaxDist();
 			network.setPrimalBound(MD);
-			network.TimeStar = network.getVertexByID(dataA.Source-1).getMinTime();
+			PulseGraph.TimeStar = network.getVertexByID(dataA.Source-1).getMinTime();
 			
-			//Size of Q
+			//Size of Q TODO
 			
-			dataA.numLabels = 10;
+			DataHandler.numLabels = 10;
 
 			//Initial weights
 			
@@ -119,11 +117,11 @@ public class PulseMain {
 		
 			System.out.println("-----------Main results------------");		
 			System.out.println("Network: "+information[0]);
-			System.out.println("Time limit: "+network.TimeC);
-			System.out.println("Time star: "+network.TimeStar);
+			System.out.println("Time limit: "+PulseGraph.TimeC);
+			System.out.println("Time star: "+PulseGraph.TimeStar);
 			System.out.println("Initial Primal Bound: "+MD);
-			System.out.println("Final Primal Bound: "+network.PrimalBound);
-			System.out.println("Final path: "+network.Path.toString());
+			System.out.println("Final Primal Bound: "+PulseGraph.PrimalBound);
+			System.out.println("Final path: "+PulseGraph.Path.toString());
 			System.out.println("Computational time: "+(FTime-ITime)/1000000000);
 			System.out.println("------------------------------------");
 
@@ -135,7 +133,7 @@ public class PulseMain {
 	 * @return the final graph
 	 */
 	private static PulseGraph createGraph(DataHandler data) {
-		int numNodes = data.NumNodes;
+		int numNodes = DataHandler.NumNodes;
 		PulseGraph Gd = new PulseGraph(numNodes);
 		for (int i = 0; i < numNodes; i++) {
 			if(i!=(data.LastNode-1)){
@@ -145,7 +143,7 @@ public class PulseMain {
 		FinalVertexPulse vv = new FinalVertexPulse(data.LastNode-1);
 		Gd.addFinalVertex(vv);
 		for(int i = 0; i <data.NumArcs; i ++){
-			Gd.addWeightedEdge( Gd.getVertexByID(data.Arcs[i][0]), Gd.getVertexByID(data.Arcs[i][1]),data.Distance[i],data.Time[i], i);			
+			Gd.addWeightedEdge( Gd.getVertexByID(DataHandler.Arcs[i][0]), Gd.getVertexByID(DataHandler.Arcs[i][1]),DataHandler.Distance[i],DataHandler.Time[i], i);			
 		}
 		return Gd;
 	}

@@ -202,8 +202,10 @@ public class FinalVertexPulse extends VertexPulse {
 		
 			PulseGraph.TimeStar=pulseWeights[0]; //The best time
 			PulseGraph.PrimalBound=pulseWeights[1]; //The best distance
+			path.add(id);
 			PulseGraph.Path.clear();
 			PulseGraph.Path.addAll(path);
+			path.remove(path.size()-1);
 		}
 
 	}

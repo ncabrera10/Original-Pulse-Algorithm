@@ -15,13 +15,9 @@ package Pulse;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.StringTokenizer;
 
 public class DataHandler {
 	
@@ -59,12 +55,24 @@ public class DataHandler {
 	 */
 	private PulseGraph Gd;
 	
+	/**
+	 * Network ID
+	 */
 	private int networkId;
 	
+	/**
+	 * Acronymum used for the network, example NY
+	 */
 	private String acro;
 	
+	/**
+	 * Number of labels for the pruning by dominance strategy
+	 */
 	static int numLabels;
 	
+	/**
+	 * Random number generator
+	 */
 	static Random r = new Random(0);
 
 	/**
@@ -82,7 +90,7 @@ public class DataHandler {
 		NumNodes = numNodes;
 		LastNode = lastNode;
 		Source = sourceNode;
-		networkId = netId;
+		setNetworkId(netId);
 		acro = acronym;
 		
 		//Creates the list of arcs. A list of distances and a list of times   --- Serian independientes del sentido de la red ! 
@@ -120,13 +128,14 @@ public class DataHandler {
 	}
 
 	/**
-	 * This procedure reads data from a data file in DIMACS format
+	 * This procedure reads data from a data file in DIMACS format (forward direction)
 	 * @throws NumberFormatException
 	 * @throws IOException
 	 */
 	public void ReadDimacsF() throws NumberFormatException, IOException {
 		File file2 = null;
 		file2 = new File("./networks/"+acro);
+		@SuppressWarnings("resource")
 		BufferedReader bufRdr2 = new BufferedReader(new FileReader(file2));
 		String line2 = null;
 		int row2 = 0;
@@ -141,13 +150,14 @@ public class DataHandler {
 	}
 	
 	/**
-	 * This procedure reads data from a data file in DIMACS format
+	 * This procedure reads data from a data file in DIMACS format (backward direction)
 	 * @throws NumberFormatException
 	 * @throws IOException
 	 */
 	public void ReadDimacsB() throws NumberFormatException, IOException {
 		File file2 = null;
 		file2 = new File("./networks/"+acro);
+		@SuppressWarnings("resource")
 		BufferedReader bufRdr2 = new BufferedReader(new FileReader(file2));
 		String line2 = null;
 		int row2 = 0;
@@ -159,6 +169,16 @@ public class DataHandler {
 			Time[row2] = Integer.parseInt(Actual[3]);
 			row2++;
 		}
+	}
+
+
+	public int getNetworkId() {
+		return networkId;
+	}
+
+
+	public void setNetworkId(int networkId) {
+		this.networkId = networkId;
 	}
 }
 
